@@ -12,17 +12,14 @@ const app = express();
 //configurar cors
 app.use(cors());
 
+app.use(express.json());
+
 //Estableciendo conexion a la base de datos
 dbConection();
 //console.log(process.env);
 
 //rutas de la API proyectos
-app.get("/", (req, res) => {
-    res.status(400).json({
-        ok: true,
-        msg: "Bienvenidos a node",
-    });
-});
+app.use("/api/usuarios", require("./routes/usuarios.routes"));
 
 //codigo desplegar servidor
 app.listen(process.env.PORT, () => {
